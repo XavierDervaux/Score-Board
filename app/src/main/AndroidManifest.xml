@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cours.dervaux.projetandroid">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".controller.Connection" android:label="@string/t_connection">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".controller.Index" android:label="@string/t_index"/>
+        <activity android:name=".controller.AddScore" android:label="@string/t_addScore">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cours.dervaux.projetandroid.controller.Index" />
+        </activity>
+        <activity android:name=".controller.Top10" android:label="@string/t_top10">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cours.dervaux.projetandroid.controller.Index" />
+        </activity>
+        <activity android:name=".controller.GameList" android:label="@string/t_gameList">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cours.dervaux.projetandroid.controller.Index" />
+        </activity>
+        <activity android:name=".controller.UserList" android:label="@string/t_userList">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cours.dervaux.projetandroid.controller.Index" />
+        </activity>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+
+</manifest>

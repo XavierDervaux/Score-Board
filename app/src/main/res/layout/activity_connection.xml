@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.cours.dervaux.projetandroid.controller.Connection">
+
+    <TextView
+        android:text="@string/connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/titleConnect"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+    <TextView
+        android:text="@string/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/username"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/titleConnect"
+        android:layout_alignLeft="@+id/inputName"
+        android:layout_alignStart="@+id/inputName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/inputName"
+        android:layout_below="@+id/username"
+        android:layout_centerHorizontal="true"
+        android:windowSoftInputMode="adjustResize"/>
+
+    <TextView
+        android:text="@string/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/inputName"
+        android:layout_alignLeft="@+id/inputPassword"
+        android:layout_alignStart="@+id/inputPassword" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/inputPassword"
+        android:layout_below="@+id/password"
+        android:layout_alignLeft="@+id/inputName"
+        android:layout_alignStart="@+id/inputName"
+        android:windowSoftInputMode="adjustResize"
+        />
+
+    <Button
+        android:text="@string/toggleRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/butRegister"
+        android:layout_alignLeft="@+id/inputPassword"
+        android:layout_alignStart="@+id/inputPassword"
+        android:layout_alignRight="@+id/inputPassword"
+        android:layout_alignEnd="@+id/inputPassword"
+        android:onClick="toggleRegCon" />
+
+    <TextView
+        android:text="@string/passwordConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/butRegister"
+        android:layout_alignLeft="@+id/butRegister"
+        android:layout_alignStart="@+id/butRegister"
+        android:layout_marginTop="20dp"
+        android:id="@+id/passConfirm"
+        android:visibility="invisible" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_below="@+id/passConfirm"
+        android:layout_alignLeft="@+id/passConfirm"
+        android:layout_alignStart="@+id/passConfirm"
+        android:id="@+id/inputPassConf"
+        android:visibility="invisible"
+        android:windowSoftInputMode="adjustResize" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/output"
+        android:layout_alignLeft="@+id/inputPassConf"
+        android:layout_alignStart="@+id/inputPassConf"
+        android:layout_alignRight="@+id/inputPassConf"
+        android:layout_alignEnd="@+id/inputPassConf"
+        android:layout_below="@+id/inputPassConf"
+        android:layout_above="@+id/butConnect" />
+
+    <Button
+        android:text="@string/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/butConnect"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/but_register"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible"
+        android:onClick="sendRegister" />
+
+    <Button
+        android:text="@string/connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/butConnect"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="sendConnect" />
+
+</RelativeLayout>

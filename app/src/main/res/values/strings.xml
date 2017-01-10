@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Android Project</string>
+    <string name="t_connection">Android Project - Connection</string>
+        <string name="connection">Connection</string>
+        <string name="username">Username</string>
+        <string name="password">Password</string>
+        <string name="toggleRegister">Toggle register</string>
+        <string name="passwordConfirm">Password confirmation</string>
+            <string name="error100">Username error.</string>
+            <string name="error110">Password error.</string>
+            <string name="error200">That user already exists.</string>
+            <string name="error1000">Can not connect the database.</string>
+            <string name="error2000">An error occurred</string>
+            <string name="error3000">Can not connect online.</string>
+            <string name="registered">Successfully registered.</string>
+        <string name="register">Register</string>
+    <string name="t_index">Android Project - Index</string>
+        <string name="addScore">Add your score</string>
+        <string name="top10">Top 10</string>
+        <string name="gameList">Game list</string>
+        <string name="userList">User list</string>
+
+    <string name="t_addScore">Android Project - Add score</string>
+    <string name="t_top10">Android Project - Top 10</string>
+    <string name="t_gameList">Android Project - Game list</string>
+    <string name="t_userList">Android Project - User list</string>
+    <string name="en" />
+</resources>
