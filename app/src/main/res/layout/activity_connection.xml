@@ -29,15 +29,15 @@
         android:id="@+id/username"
         android:layout_marginTop="19dp"
         android:layout_below="@+id/titleConnect"
-        android:layout_alignLeft="@+id/inputName"
-        android:layout_alignStart="@+id/inputName" />
+        android:layout_alignLeft="@+id/inputUsername"
+        android:layout_alignStart="@+id/inputUsername" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/inputName"
+        android:id="@+id/inputUsername"
         android:layout_below="@+id/username"
         android:layout_centerHorizontal="true"
         android:windowSoftInputMode="adjustResize"/>
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/password"
         android:layout_marginTop="22dp"
-        android:layout_below="@+id/inputName"
+        android:layout_below="@+id/inputUsername"
         android:layout_alignLeft="@+id/inputPassword"
         android:layout_alignStart="@+id/inputPassword" />
 
@@ -59,8 +59,8 @@
         android:ems="10"
         android:id="@+id/inputPassword"
         android:layout_below="@+id/password"
-        android:layout_alignLeft="@+id/inputName"
-        android:layout_alignStart="@+id/inputName"
+        android:layout_alignLeft="@+id/inputUsername"
+        android:layout_alignStart="@+id/inputUsername"
         android:windowSoftInputMode="adjustResize"
         />
 

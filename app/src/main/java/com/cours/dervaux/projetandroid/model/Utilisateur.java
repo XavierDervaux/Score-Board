@@ -1,6 +1,7 @@
 package com.cours.dervaux.projetandroid.model;
 
 public class Utilisateur {
+    public static Utilisateur connectedUser = null;
     private int id = -1;
     private String pseudo = null;
     private String mdp = null;

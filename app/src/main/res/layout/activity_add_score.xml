@@ -10,4 +10,68 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cours.dervaux.projetandroid.controller.AddScore">
 
+    <TextView
+        android:text="@string/gameName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:id="@+id/gameName"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/inputGameName"
+        android:layout_alignStart="@+id/inputGameName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/gameName"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/inputGameName"
+        android:windowSoftInputMode="adjustResize" />
+
+    <TextView
+        android:text="@string/gameScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputGameName"
+        android:layout_alignLeft="@+id/inputGameName"
+        android:layout_alignStart="@+id/inputGameName"
+        android:layout_marginTop="12dp"
+        android:id="@+id/gameScore" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/gameScore"
+        android:layout_alignLeft="@+id/gameScore"
+        android:layout_alignStart="@+id/gameScore"
+        android:id="@+id/inputScore"
+        android:windowSoftInputMode="adjustResize" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/output"
+        android:layout_below="@+id/inputScore"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/but_add" />
+
+    <Button
+        android:text="@string/addScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/but_add"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="btn_sendScore"/>
+
 </RelativeLayout>

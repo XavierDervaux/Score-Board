@@ -1,45 +1,36 @@
 package com.cours.dervaux.projetandroid.model;
 
 public class Score {
-    int id = -1;
-    String jeu = null;
+    int id_user = -1;
+    String game = null;
     int score = -1;
-    Utilisateur util = null;
 
-    public Score(int id, String jeu, int score, Utilisateur util){
-        this.id = id;
+    public Score(int id_user, String game, int score){
+        this.id_user = id_user;
+        this.game = game;
         this.score = score;
-        this.jeu = jeu;
-        this.util = util;
     }
-    public Score(String jeu, int score, Utilisateur util){
+    public Score(String game, int score){
         this.score = score;
-        this.jeu = jeu;
-        this.util = util;
+        this.game = game;
     }
 
     public int    getId(){
-        return this.id;
+        return this.id_user;
     }
-    public void   setId(int id) {
-        this.id = id;
+    public void   setId(int id_user) {
+        this.id_user = id_user;
     }
-    public String getJeu(){
-        return this.jeu;
+    public String getGame(){
+        return this.game;
     }
-    public void   setJeu(String jeu) {
-        this.jeu = jeu;
+    public void setGame(String game) {
+        this.game = game;
     }
     public int    getScore(){
         return this.score;
     }
     public void   setScore(int score) {
         this.score = score;
-    }
-    public Utilisateur getUtil() {
-        return this.util;
-    }
-    public void setUtil(Utilisateur util) {
-        this.util = util;
     }
 }
