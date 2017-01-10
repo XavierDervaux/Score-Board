@@ -8,7 +8,8 @@
         <string name="passwordConfirm">Password confirmation</string>
             <string name="error100">Username error.</string>
             <string name="error110">Password error.</string>
-            <string name="error200">That user already exists.</string>
+            <string name="error200I">That user already exists.</string>
+            <string name="error200C">User or password incorrect.</string>
             <string name="error1000">Can not connect the database.</string>
             <string name="error2000">An error occurred</string>
             <string name="error3000">Can not connect online.</string>

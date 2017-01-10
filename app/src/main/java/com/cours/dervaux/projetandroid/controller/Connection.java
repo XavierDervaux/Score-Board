@@ -15,23 +15,67 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class Connection extends AppCompatActivity {
     private int type = 1; //1 = connect, -1 = register
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
     public static Utilisateur connectedUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    protected void toggleRegCon(View view) {
+    protected void btn_toggleRegCon(View view) {
+        toggleRegCon();
+    }
+
+    protected void btn_sendRegister(View view){
+        String username = ((EditText) findViewById(R.id.inputName)).getText().toString();
+        String password = ((EditText) findViewById(R.id.inputPassword)).getText().toString();
+
+        if(password.equals(((EditText) findViewById(R.id.inputPassConf)).getText().toString())){ //Le mdp est égal à sa confirmation
+
+        } else ((TextView) findViewById(R.id.output)).setText(R.string.error110);
+    }
+
+    protected void btn_sendConnect(View view){
+        String username = ((EditText) findViewById(R.id.inputName)).getText().toString();
+        String password = ((EditText) findViewById(R.id.inputPassword)).getText().toString();
+
+        Connection.connectedUser = new Utilisateur(username, password);
+        new GetConnect(Connection.this).execute(Connection.connectedUser);
+    }
+
+    public void registerResponse(int id, int code){
+        switch(code){
+            case 0   :
+                Connection.connectedUser = null; //L'user doit ensuite se connecter
+                toggleRegCon();
+                ((TextView) findViewById(R.id.output)).setText(R.string.registered); break;
+            case 100 : ((TextView) findViewById(R.id.output)).setText(R.string.error100); break;
+            case 110 : ((TextView) findViewById(R.id.output)).setText(R.string.error110); break;
+            case 200 : ((TextView) findViewById(R.id.output)).setText(R.string.error200I); break;
+            case 1000: ((TextView) findViewById(R.id.output)).setText(R.string.error1000); break;
+            case 2000: ((TextView) findViewById(R.id.output)).setText(R.string.error2000); break;
+        }
+    }
+
+    public void connectResponse(int id, int code){
+        System.out.println(id);
+        System.out.println(code);
+        switch(code){
+            case 0   :
+                Connection.connectedUser.setId(id);
+                Intent intent = new Intent(this, Index.class);
+                startActivity(intent); break;
+            case 100 : ((TextView) findViewById(R.id.output)).setText(R.string.error100); break;
+            case 110 : ((TextView) findViewById(R.id.output)).setText(R.string.error110); break;
+            case 200 : ((TextView) findViewById(R.id.output)).setText(R.string.error200C); break;
+            case 1000: ((TextView) findViewById(R.id.output)).setText(R.string.error1000); break;
+            case 2000: ((TextView) findViewById(R.id.output)).setText(R.string.error2000); break;
+        }
+        Connection.connectedUser = null;
+    }
+
+    private void toggleRegCon() {
         Button btnCon = (Button) findViewById(R.id.butConnect);
         Button btnReg = (Button) findViewById(R.id.but_register);
         TextView label = (TextView) findViewById(R.id.passConfirm);
@@ -52,32 +96,5 @@ public class Connection extends AppCompatActivity {
             label.setVisibility(View.INVISIBLE);
             confMdp.setVisibility(View.INVISIBLE);
         }
-    }
-
-    protected void sendRegister(View view){
-        String username = ((EditText) findViewById(R.id.inputName)).getText().toString();
-        String password = ((EditText) findViewById(R.id.inputPassword)).getText().toString();
-
-        if(password.equals(((EditText) findViewById(R.id.inputPassConf)).getText().toString())){ //Le mdp est égal à sa confirmation
-
-        }
-    }
-
-    protected void sendConnect(View view) {
-        String username = ((EditText) findViewById(R.id.inputName)).getText().toString();
-        String password = ((EditText) findViewById(R.id.inputPassword)).getText().toString();
-
-        Utilisateur user = new Utilisateur(username, password);
-        new GetConnect(Connection.this).execute(user);
-    }
-
-    public void registerResponse(int id, int code){
-
-    }
-
-    public void connectResponse(int id, int code){
-
-        Intent intent = new Intent(this, Index.class);
-        startActivity(intent);
     }
 }
