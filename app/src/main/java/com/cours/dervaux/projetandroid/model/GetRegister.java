@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.cours.dervaux.projetandroid.controller.Connection;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,11 +18,11 @@ import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
-public class GetConnect extends AsyncTask<Utilisateur, String, InputStreamReader> {
+public class GetRegister extends AsyncTask<Utilisateur, String, InputStreamReader> {
 
     private Context context;
 
-    public GetConnect(Context context){
+    public GetRegister(Context context){
         this.context = context;
     }
 
@@ -29,7 +30,7 @@ public class GetConnect extends AsyncTask<Utilisateur, String, InputStreamReader
     protected InputStreamReader doInBackground(Utilisateur... data) {
         InputStreamReader reader = null;
         try{
-            URL url = new URL(Access.URL_CONNECTION);
+            URL url = new URL(Access.URL_REGISTER);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(15000);
@@ -65,27 +66,17 @@ public class GetConnect extends AsyncTask<Utilisateur, String, InputStreamReader
 
     protected void onPostExecute(InputStreamReader result) {
         super.onPostExecute(result);
-        int code = 1, id = -1;
+        int code = 1;
         try{
             if(result != null){
-                JsonReader jsonReader  = new JsonReader(result);
-                jsonReader.beginObject();
-                if(jsonReader.hasNext()){
-                    String name = jsonReader.nextName();
-                    if(name.equals("code")){
-                        code = jsonReader.nextInt();
-                        if(code == 0){
-                            jsonReader.nextName();
-                            id = jsonReader.nextInt();
-                        }
-                    }
-                }
-                ((Connection)this.context).connectResponse(id, code); //On revient à la fonction appellante
-                jsonReader.endObject();
+                BufferedReader br = new BufferedReader(result);
+                code = Integer.parseInt(br.readLine());
+                ((Connection)this.context).registerResponse(code);
+                br.close();
                 result.close();
             }
         } catch(IOException e){
-            Log.e("TEXT", "Error parse json  : " + e.toString());
+            Log.e("TEXT", "Error parse text  : " + e.toString());
         }
     }
 }

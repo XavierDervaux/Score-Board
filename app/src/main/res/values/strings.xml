@@ -13,7 +13,7 @@
             <string name="error1000">Can not connect the database.</string>
             <string name="error2000">An error occurred</string>
             <string name="error3000">Can not connect online.</string>
-            <string name="registered">Successfully registered.</string>
+            <string name="registered">Successfully registered. You can now log in.</string>
         <string name="register">Register</string>
     <string name="t_index">Android Project - Index</string>
         <string name="addScore">Add your score</string>

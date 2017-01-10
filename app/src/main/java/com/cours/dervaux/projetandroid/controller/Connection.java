@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.content.Intent;
 import com.cours.dervaux.projetandroid.R;
 import com.cours.dervaux.projetandroid.model.GetConnect;
+import com.cours.dervaux.projetandroid.model.GetRegister;
 import com.cours.dervaux.projetandroid.model.Utilisateur;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -32,7 +33,8 @@ public class Connection extends AppCompatActivity {
         String password = ((EditText) findViewById(R.id.inputPassword)).getText().toString();
 
         if(password.equals(((EditText) findViewById(R.id.inputPassConf)).getText().toString())){ //Le mdp est égal à sa confirmation
-
+            Connection.connectedUser = new Utilisateur(username, password);
+            new GetRegister(Connection.this).execute(Connection.connectedUser);
         } else ((TextView) findViewById(R.id.output)).setText(R.string.error110);
     }
 
@@ -44,7 +46,7 @@ public class Connection extends AppCompatActivity {
         new GetConnect(Connection.this).execute(Connection.connectedUser);
     }
 
-    public void registerResponse(int id, int code){
+    public void registerResponse(int code){
         switch(code){
             case 0   :
                 Connection.connectedUser = null; //L'user doit ensuite se connecter
@@ -59,8 +61,6 @@ public class Connection extends AppCompatActivity {
     }
 
     public void connectResponse(int id, int code){
-        System.out.println(id);
-        System.out.println(code);
         switch(code){
             case 0   :
                 Connection.connectedUser.setId(id);
@@ -96,5 +96,6 @@ public class Connection extends AppCompatActivity {
             label.setVisibility(View.INVISIBLE);
             confMdp.setVisibility(View.INVISIBLE);
         }
+        type = type * -1;
     }
 }
