@@ -1,37 +1,43 @@
 <resources>
-    <string name="app_name">Android Project</string>
-    <string name="t_connection">Android Project - Connection</string>
-            <string name="connection">Connection</string>
-            <string name="username">Username</string>
-            <string name="password">Password</string>
-            <string name="toggleRegister">Toggle register</string>
-            <string name="passwordConfirm">Password confirmation</string>
-                    <string name="error100">Username error.</string>
-                    <string name="error110">Password error.</string>
-                    <string name="error200I">That user already exists.</string>
-                    <string name="error200C">User or password incorrect.</string>
-                    <string name="error1000">Can not connect the database.</string>
-                    <string name="error2000">An error occurred</string>
-                    <string name="error3000">Can not connect online.</string>
-                    <string name="registered">Successfully registered. You can now log in.</string>
-            <string name="register">Register</string>
-    <string name="t_index">Android Project - Index</string>
-            <string name="addScore">Add your score</string>
-            <string name="top10">Top 10</string>
-            <string name="gameList">Game list</string>
-            <string name="userList">User list</string>
-    <string name="t_addScore">Android Project - Add score</string>
-            <string name="gameName">Game name</string>
-            <string name="gameScore">Your score</string>
-            <string name="err100">Score error.</string>
-            <string name="err110">Game name error.</string>
-            <string name="err120">Internal id error.</string>
-    <string name="t_top10">Android Project - Top 10</string>btnTop10
-        <string name="btnTop10">Get the Top10 for that game</string>
-        <string name="error100T">Game name error.</string>
-        <string name="error200T">No scores for that game.</string>
-        <string name="t10gameList">Top 10 for</string>
-    <string name="t_gameList">Android Project - Game list</string>
-    <string name="t_userList">Android Project - User list</string>
+<!-- Titles -->
+    <string name="app_name">Score Board</string>
+    <string name="t_connection">Score Board - Connection</string>
+    <string name="t_index">Score Board - Index</string>
+    <string name="t_addScore">Score Board - Add score</string>
+    <string name="t_top10">Score Board - Top 10</string>
+    <string name="t_gameList">Score Board - Game list</string>
+    <string name="t_userList">Score Board - User list</string>
+
+<!-- Others -->
+    <string name="connection">Connection</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="toggleRegister">Toggle register</string>
+    <string name="passwordConfirm">Password confirmation</string>
+    <string name="registered">Successfully registered. You can now log in.</string>
+    <string name="register">Register</string>
+    <string name="addScore">Add your score</string>
+    <string name="top10">Top 10</string>
+    <string name="gameList">Game list</string>
+    <string name="userList">User list</string>
+    <string name="gameName">Game name</string>
+    <string name="gameScore">Your score</string>
+    <string name="btnTop10">Get the Top10 for that game</string>
+    <string name="t10gameList">Top 10 for</string>
+
+<!-- Errors -->
+    <string name="error100">Username error.</string>
+    <string name="error110">Password error.</string>
+    <string name="error200I">That user already exists.</string>
+    <string name="error200C">User or password incorrect.</string>
+    <string name="error1000">Can not connect the database.</string>
+    <string name="error2000">An error occurred</string>
+    <string name="error3000">Can not connect online.</string>
+    <string name="err100">Score error.</string>
+    <string name="err110">Game name error.</string>
+    <string name="err120">Internal id error.</string>
+    <string name="error100T">Game name error.</string>
+    <string name="error200T">No scores for that game.</string>
+
     <string name="en" />
 </resources>

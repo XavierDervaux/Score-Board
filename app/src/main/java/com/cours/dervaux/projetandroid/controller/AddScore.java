@@ -24,7 +24,7 @@ public class AddScore extends AppCompatActivity {
     }
 
     private void sendScore(){
-        String user   =  Player.connectedUser.getPseudo();
+        String user  =  "" + Player.connectedUser.getId();
         String name  = ((EditText) findViewById(R.id.inputGameName)).getText().toString();
         try {
             int in = Integer.parseInt(((EditText) findViewById(R.id.inputScore)).getText().toString());
