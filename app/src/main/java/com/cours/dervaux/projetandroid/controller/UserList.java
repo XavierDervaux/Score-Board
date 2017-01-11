@@ -12,6 +12,7 @@ public class UserList extends AppCompatActivity {
         setContentView(R.layout.activity_user_list);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
+
 }
 
 /*1.6 Lister les utilisateurs

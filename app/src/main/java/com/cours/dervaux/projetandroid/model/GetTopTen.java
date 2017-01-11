@@ -24,41 +24,31 @@ public class GetTopTen extends AsyncTask<String, String, InputStreamReader> {
 
     @Override
     protected InputStreamReader doInBackground(String... data) {
-        InputStreamReader reader = null;
-
+        InputStreamReader res = null;
         try{
             this.game = data[0];
-            String charset = "UTF-8";
-            String query = String.format("jeu=%s",
-                    URLEncoder.encode(""+data[0], charset));
-            URL url = new URL(Access.URL_TOP_GAME + "?" + query);
+            String query = String.format("jeu=%s", URLEncoder.encode(""+data[0], "UTF-8"));
+            URL url = new URL(RPC_FETCH.TOP_TEN + "?" + query);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(15000);
             connection.setDoInput(true);
             connection.setDoOutput(true);
 
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK){
-                reader = new InputStreamReader(connection.getInputStream());
-            }
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK)
+                res = new InputStreamReader(connection.getInputStream());
             connection.disconnect();
-        } catch(SocketTimeoutException e){ //Le serveur ne répond pas
-            Log.e("Connection", "Error time out server : " + e.toString());
-        } catch (IOException e){
-            Log.e("Connection", "Error communication server : " + e.toString());
-        } catch(Exception e){
-            Log.e("Connection", "Error connection server : " + e.toString());
-        }
-
-        return reader;
+        } catch(Exception e){  e.printStackTrace();  }
+        return res;
     }
 
     @Override
     protected void onPostExecute(InputStreamReader result) {
         super.onPostExecute(result);
-        List<Score> list = new ArrayList<Score>();
         int code = 1;
         String name;
+        List<Score> list = new ArrayList<Score>();
+
 
         try{
             if(result != null){
@@ -77,30 +67,27 @@ public class GetTopTen extends AsyncTask<String, String, InputStreamReader> {
                             }
                             jsonReader.endArray();
                         }
-                        ((Top10)this.context).topTenResponse(code,list);
+                        ((Top10)this.context).topTenResponse(code,list); //Sending the response
                     }
                 }
                 jsonReader.endObject();
                 result.close();
             }
-        } catch(IOException e){
-            Log.e("JSON", "Error parse json  : " + e.toString());
-        }
+        } catch(Exception e){  e.printStackTrace();  }
     }
 
     public Score readGame(JsonReader reader) throws IOException{
-        String user = null;
-        int score = -1;
+        Score res = null;
 
         reader.beginObject();
         if(reader.hasNext()){
             reader.nextName();
-            user = reader.nextString();
+                String user = reader.nextString();
             reader.nextName();
-            score = reader.nextInt();
+                int score = reader.nextInt();
+            res = new Score(user, this.game, score);
         }
         reader.endObject();
-
-        return new Score(user, this.game, score);
+        return res;
     }
 }

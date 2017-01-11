@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.cours.dervaux.projetandroid.R;
 import com.cours.dervaux.projetandroid.model.GetTopTen;
 import com.cours.dervaux.projetandroid.model.Score;
-
 import java.util.List;
 
 public class Top10 extends AppCompatActivity {
@@ -22,7 +21,11 @@ public class Top10 extends AppCompatActivity {
         ((TextView) findViewById(R.id.output)).setText("");
     }
 
-    protected void sendTopTen(View view){
+    protected void btn_sendTopTen(View view){
+        sendTopTen();
+    }
+
+    private void sendTopTen(){
         String gameName = ((EditText) findViewById(R.id.inputT10GameName)).getText().toString();
         new GetTopTen(Top10.this).execute(gameName);
     }

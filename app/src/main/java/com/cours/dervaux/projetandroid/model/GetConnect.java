@@ -17,7 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
-public class GetConnect extends AsyncTask<Utilisateur, String, InputStreamReader> {
+public class GetConnect extends AsyncTask<Player, String, InputStreamReader> {
 
     private Context context;
 
@@ -26,40 +26,30 @@ public class GetConnect extends AsyncTask<Utilisateur, String, InputStreamReader
     }
 
     @Override
-    protected InputStreamReader doInBackground(Utilisateur... data) {
+    protected InputStreamReader doInBackground(Player... data) {
         InputStreamReader reader = null;
         try{
-            URL url = new URL(Access.URL_CONNECTION);
+            URL url = new URL(RPC_FETCH.CONNECTION);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(15000);
             connection.setDoInput(true);
             connection.setDoOutput(true);
-
             OutputStream os = connection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-
             Uri.Builder builder = new Uri.Builder()
                     .appendQueryParameter("pseudo", data[0].getPseudo())
                     .appendQueryParameter("mdp", data[0].getMdp());
             String query = builder.build().getEncodedQuery();
-
             writer.write(query);
             writer.flush();
             writer.close();
             os.close();
 
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK){
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK)
                 reader = new InputStreamReader(connection.getInputStream());
-            }
             connection.disconnect();
-        } catch(SocketTimeoutException e){
-            Log.e("Connection", "Error time out server : " + e.toString());
-        } catch (IOException e){
-            Log.e("Connection", "Error communication server : " + e.toString());
-        } catch(Exception e){
-            Log.e("Connection", "Error connection server : " + e.toString());
-        }
+        } catch(Exception e){  e.printStackTrace();  }
         return reader;
     }
 
@@ -80,13 +70,11 @@ public class GetConnect extends AsyncTask<Utilisateur, String, InputStreamReader
                         }
                     }
                 }
-                ((Connection)this.context).connectResponse(id, code); //On revient à la fonction appellante
+                ((Connection)this.context).connectResponse(id, code); //Sending the response
                 jsonReader.endObject();
                 result.close();
             }
-        } catch(IOException e){
-            Log.e("TEXT", "Error parse json  : " + e.toString());
-        }
+        } catch(Exception e){  e.printStackTrace();  }
     }
 }
 

@@ -39,7 +39,7 @@
         android:id="@+id/butTop10"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="sendTopTen" />
+        android:onClick="btn_sendTopTen" />
 
     <TextView
         android:layout_width="wrap_content"

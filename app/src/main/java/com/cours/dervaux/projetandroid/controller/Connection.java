@@ -10,7 +10,7 @@ import android.content.Intent;
 import com.cours.dervaux.projetandroid.R;
 import com.cours.dervaux.projetandroid.model.GetConnect;
 import com.cours.dervaux.projetandroid.model.GetRegister;
-import com.cours.dervaux.projetandroid.model.Utilisateur;
+import com.cours.dervaux.projetandroid.model.Player;
 
 public class Connection extends AppCompatActivity {
     private int type = 1; //1 = connect, -1 = register
@@ -27,27 +27,27 @@ public class Connection extends AppCompatActivity {
     }
 
     protected void btn_sendRegister(View view){
+        sendRegister();
+    }
+
+    protected void btn_sendConnect(View view){
+        sendConnect();
+    }
+
+    private void sendRegister(){
         String username = ((EditText) findViewById(R.id.inputUsername)).getText().toString();
         String password = ((EditText) findViewById(R.id.inputPassword)).getText().toString();
 
         if(password.equals(((EditText) findViewById(R.id.inputPassConf)).getText().toString())){ //Le mdp est égal à sa confirmation
-            Utilisateur.connectedUser = new Utilisateur(username, password);
-            new GetRegister(Connection.this).execute(Utilisateur.connectedUser);
+            Player.connectedUser = new Player(username, password);
+            new GetRegister(Connection.this).execute(Player.connectedUser);
         } else ((TextView) findViewById(R.id.output)).setText(R.string.error110);
-    }
-
-    protected void btn_sendConnect(View view){
-        String username = ((EditText) findViewById(R.id.inputUsername)).getText().toString();
-        String password = ((EditText) findViewById(R.id.inputPassword)).getText().toString();
-
-        Utilisateur.connectedUser = new Utilisateur(username, password);
-        new GetConnect(Connection.this).execute(Utilisateur.connectedUser);
     }
 
     public void registerResponse(int code){
         switch(code){
             case 0   :
-                Utilisateur.connectedUser = null; //L'user doit ensuite se connecter
+                Player.connectedUser = null; //L'user doit ensuite se connecter
                 toggleRegCon();
                 ((TextView) findViewById(R.id.output)).setText(R.string.registered); break;
             case 100 : ((TextView) findViewById(R.id.output)).setText(R.string.error100); break;
@@ -58,21 +58,29 @@ public class Connection extends AppCompatActivity {
         }
     }
 
+    private void sendConnect(){
+        String username = ((EditText) findViewById(R.id.inputUsername)).getText().toString();
+        String password = ((EditText) findViewById(R.id.inputPassword)).getText().toString();
+
+        Player.connectedUser = new Player(username, password);
+        new GetConnect(Connection.this).execute(Player.connectedUser);
+    }
+
     public void connectResponse(int id, int code){
         switch(code){
             case 0   :
-                Utilisateur.connectedUser.setId(id);
+                Player.connectedUser.setId(id);
                 Intent intent = new Intent(this, Index.class);
                 startActivity(intent); break;
-            case 100 : ((TextView) findViewById(R.id.output)).setText(R.string.error100); Utilisateur.connectedUser = null; break;
-            case 110 : ((TextView) findViewById(R.id.output)).setText(R.string.error110); Utilisateur.connectedUser = null; break;
-            case 200 : ((TextView) findViewById(R.id.output)).setText(R.string.error200C); Utilisateur.connectedUser = null; break;
-            case 1000: ((TextView) findViewById(R.id.output)).setText(R.string.error1000); Utilisateur.connectedUser = null; break;
-            case 2000: ((TextView) findViewById(R.id.output)).setText(R.string.error2000); Utilisateur.connectedUser = null; break;
+            case 100 : ((TextView) findViewById(R.id.output)).setText(R.string.error100); Player.connectedUser = null; break;
+            case 110 : ((TextView) findViewById(R.id.output)).setText(R.string.error110); Player.connectedUser = null; break;
+            case 200 : ((TextView) findViewById(R.id.output)).setText(R.string.error200C); Player.connectedUser = null; break;
+            case 1000: ((TextView) findViewById(R.id.output)).setText(R.string.error1000); Player.connectedUser = null; break;
+            case 2000: ((TextView) findViewById(R.id.output)).setText(R.string.error2000); Player.connectedUser = null; break;
         }
     }
 
-    private void toggleRegCon() {
+    private void toggleRegCon(){
         Button btnCon = (Button) findViewById(R.id.butConnect);
         Button btnReg = (Button) findViewById(R.id.but_register);
         TextView label = (TextView) findViewById(R.id.passConfirm);

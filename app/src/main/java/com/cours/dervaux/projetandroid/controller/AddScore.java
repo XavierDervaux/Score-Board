@@ -8,10 +8,9 @@ import android.widget.TextView;
 import com.cours.dervaux.projetandroid.R;
 import com.cours.dervaux.projetandroid.model.GetScore;
 import com.cours.dervaux.projetandroid.model.Score;
-import com.cours.dervaux.projetandroid.model.Utilisateur;
+import com.cours.dervaux.projetandroid.model.Player;
 
 public class AddScore extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +20,11 @@ public class AddScore extends AppCompatActivity {
     }
 
     protected void btn_sendScore(View view){
-        String user   =  Utilisateur.connectedUser.getPseudo();
+        sendScore();
+    }
+
+    private void sendScore(){
+        String user   =  Player.connectedUser.getPseudo();
         String name  = ((EditText) findViewById(R.id.inputGameName)).getText().toString();
         try {
             int in = Integer.parseInt(((EditText) findViewById(R.id.inputScore)).getText().toString());

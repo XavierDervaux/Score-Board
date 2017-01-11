@@ -24,29 +24,21 @@ public class GetGameList extends AsyncTask<String, String, InputStreamReader> {
 
     @Override
     protected InputStreamReader doInBackground(String... data) {
-        InputStreamReader reader = null;
+        InputStreamReader res = null;
 
         try{
-            URL url = new URL(Access.URL_LIST_GAME);
+            URL url = new URL(RPC_FETCH.LIST_GAME);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(15000);
             connection.setDoInput(true);
             connection.setDoOutput(true);
 
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK){
-                reader = new InputStreamReader(connection.getInputStream());
-            }
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK)
+                res = new InputStreamReader(connection.getInputStream());
             connection.disconnect();
-        } catch(SocketTimeoutException e){ //Le serveur ne répond pas
-            Log.e("Connection", "Error time out server : " + e.toString());
-        } catch (IOException e){
-            Log.e("Connection", "Error communication server : " + e.toString());
-        } catch(Exception e){
-            Log.e("Connection", "Error connection server : " + e.toString());
-        }
-
-        return reader;
+        } catch(Exception e){  e.printStackTrace();  }
+        return res;
     }
 
     @Override
@@ -78,14 +70,12 @@ public class GetGameList extends AsyncTask<String, String, InputStreamReader> {
                             }
                             jsonReader.endArray();
                         }
-                        ((GameList)this.context).gameListResponse(code,list);
+                        ((GameList)this.context).gameListResponse(code,list); //Sending the response
                     }
                 }
                 jsonReader.endObject();
                 result.close();
             }
-        } catch(IOException e){
-            Log.e("JSON", "Error parse json  : " + e.toString());
-        }
+        } catch(Exception e){  e.printStackTrace();  }
     }
 }

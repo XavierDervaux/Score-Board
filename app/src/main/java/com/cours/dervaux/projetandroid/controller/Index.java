@@ -8,7 +8,6 @@ import android.view.View;
 import com.cours.dervaux.projetandroid.R;
 
 public class Index extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

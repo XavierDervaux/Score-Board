@@ -22,34 +22,25 @@ public class GetScore extends AsyncTask<Score, String, InputStreamReader>
 
     @Override
     protected InputStreamReader doInBackground(Score... data) {
-        InputStreamReader reader = null;
+        InputStreamReader res = null;
 
         try{
-            String charset = "UTF-8";
             String query = String.format("score=%s&jeu=%s&id_pseudo=%s",
-                    URLEncoder.encode(""+data[0].getScore(), charset),
-                    URLEncoder.encode(""+data[0].getGame(), charset),
-                    URLEncoder.encode(""+data[0].getUser(), charset) );
-            URL url = new URL(Access.URL_ADD_SCORE + "?" + query);
+                    URLEncoder.encode(""+data[0].getScore(), "UTF-8"),
+                    URLEncoder.encode(""+data[0].getGame(), "UTF-8"),
+                    URLEncoder.encode(""+data[0].getUser(), "UTF-8") );
+            URL url = new URL(RPC_FETCH.ADD_SCORE + "?" + query);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(15000);
             connection.setDoInput(true);
             connection.setDoOutput(true);
 
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK){
-                reader = new InputStreamReader(connection.getInputStream());
-            }
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK)
+                res = new InputStreamReader(connection.getInputStream());
             connection.disconnect();
-        } catch(SocketTimeoutException e){ //Le serveur ne répond pas
-            Log.e("Connection", "Error time out server : " + e.toString());
-        } catch (IOException e){
-            Log.e("Connection", "Error communication server : " + e.toString());
-        } catch(Exception e){
-            Log.e("Connection", "Error connection server : " + e.toString());
-        }
-
-        return reader;
+        } catch(Exception e){  e.printStackTrace();  }
+        return res;
     }
 
     @Override
@@ -60,12 +51,10 @@ public class GetScore extends AsyncTask<Score, String, InputStreamReader>
             if(result != null){
                 BufferedReader br = new BufferedReader (result);
                 code = Integer.parseInt(br.readLine());
-                ((AddScore)this.context).scoreResponse(code);
+                ((AddScore)this.context).scoreResponse(code); //Sending the response
                 br.close();
                 result.close();
             }
-        } catch(IOException e){
-            Log.e("TEXT", "Error parse text  : " + e.toString());
-        }
+        } catch(Exception e){  e.printStackTrace();  }
     }
 }

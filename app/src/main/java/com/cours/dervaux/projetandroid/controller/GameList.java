@@ -27,9 +27,15 @@ public class GameList extends AppCompatActivity {
         new GetGameList(GameList.this).execute("");
     }
 
+    protected void btn_goPrevious(View view){
+        goPrevious();
+    }
+
+    protected void btn_goNext(View view){
+        goNext();
+    }
+
     public void gameListResponse(int code, List<String> list){
-        System.out.println(code);
-        System.out.println(list.toString());
         switch(code){
             case 0   :
                 this.list = list;
@@ -44,7 +50,7 @@ public class GameList extends AppCompatActivity {
         }
     }
 
-    public void updateVue(){
+    private void updateVue(){
         TextView tv1 = (TextView) findViewById(R.id.tv_game1);
         TextView tv2 = (TextView) findViewById(R.id.tv_game2);
         TextView tv3 = (TextView) findViewById(R.id.tv_game3);
@@ -58,7 +64,7 @@ public class GameList extends AppCompatActivity {
         if(i+4 < list.size()){ tv5.setText(list.get(this.i+4)); } else { tv5.setText(""); }
     }
 
-    protected void goPrevious(View view){
+    private void goPrevious(){
         this.i -= 5;
         if(this.i <= 0){
             this.i = 0;
@@ -70,7 +76,7 @@ public class GameList extends AppCompatActivity {
         updateVue();
     }
 
-    protected void goNext(View view){
+    private void goNext(){
         this.i += 5;
         if(this.i+5 >= this.list.size()){
             ((Button) findViewById(R.id.btn_next)).setEnabled(false);

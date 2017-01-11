@@ -80,7 +80,7 @@
         android:id="@+id/btn_next"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:enabled="false"
-        android:onClick="goNext" />
+        android:onClick="btn_goNext" />
 
     <Button
         android:text="←"
@@ -92,5 +92,5 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:enabled="false"
-        android:onClick="goPrevious" />
+        android:onClick="btn_goPrevious" />
 </RelativeLayout>
