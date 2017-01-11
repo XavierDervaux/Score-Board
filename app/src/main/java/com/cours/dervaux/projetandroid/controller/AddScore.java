@@ -17,14 +17,15 @@ public class AddScore extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_score);
         getSupportActionBar().setHomeButtonEnabled(true);
+        ((TextView) findViewById(R.id.output)).setText("");
     }
 
     protected void btn_sendScore(View view){
-        int userId   =  Utilisateur.connectedUser.getId();
+        String user   =  Utilisateur.connectedUser.getPseudo();
         String name  = ((EditText) findViewById(R.id.inputGameName)).getText().toString();
         try {
             int in = Integer.parseInt(((EditText) findViewById(R.id.inputScore)).getText().toString());
-            Score score = new Score(userId,name,in);
+            Score score = new Score(user,name,in);
 
             new GetScore(AddScore.this).execute(score);
         }catch(Exception e){ ((TextView) findViewById(R.id.output)).setText(R.string.err100); }

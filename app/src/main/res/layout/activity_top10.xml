@@ -10,4 +10,58 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cours.dervaux.projetandroid.controller.Top10">
 
+    <TextView
+        android:text="@string/gameName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="179dp"
+        android:id="@+id/t10GameName"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/inputT10GameName"
+        android:layout_alignStart="@+id/inputT10GameName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/inputT10GameName"
+        android:layout_below="@+id/t10GameName"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/btnTop10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/butTop10"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="sendTopTen" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputT10GameName"
+        android:layout_alignLeft="@+id/inputT10GameName"
+        android:layout_alignStart="@+id/inputT10GameName"
+        android:id="@+id/output"
+        android:layout_alignRight="@+id/inputT10GameName"
+        android:layout_alignEnd="@+id/inputT10GameName"
+        android:layout_above="@+id/butTop10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/showTop10"
+        android:layout_toStartOf="@+id/inputT10GameName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>

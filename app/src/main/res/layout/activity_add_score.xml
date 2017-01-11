@@ -51,17 +51,6 @@
         android:id="@+id/inputScore"
         android:windowSoftInputMode="adjustResize" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/output"
-        android:layout_below="@+id/inputScore"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/but_add" />
-
     <Button
         android:text="@string/addScore"
         android:layout_width="wrap_content"
@@ -73,5 +62,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="btn_sendScore"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/output"
+        android:layout_below="@+id/inputScore"
+        android:layout_alignLeft="@+id/inputScore"
+        android:layout_alignStart="@+id/inputScore"
+        android:layout_alignRight="@+id/inputScore"
+        android:layout_alignEnd="@+id/inputScore"
+        android:layout_above="@+id/but_add" />
 
 </RelativeLayout>

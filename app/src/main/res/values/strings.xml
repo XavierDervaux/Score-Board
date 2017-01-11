@@ -26,7 +26,11 @@
             <string name="err100">Score error.</string>
             <string name="err110">Game name error.</string>
             <string name="err120">Internal id error.</string>
-    <string name="t_top10">Android Project - Top 10</string>
+    <string name="t_top10">Android Project - Top 10</string>btnTop10
+        <string name="btnTop10">Get the Top10 for that game</string>
+        <string name="error100T">Game name error.</string>
+        <string name="error200T">No scores for that game.</string>
+        <string name="t10gameList">Top 10 for</string>
     <string name="t_gameList">Android Project - Game list</string>
     <string name="t_userList">Android Project - User list</string>
     <string name="en" />

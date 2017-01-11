@@ -19,6 +19,7 @@ public class Connection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection);
+        ((TextView) findViewById(R.id.output)).setText("");
     }
 
     protected void btn_toggleRegCon(View view) {

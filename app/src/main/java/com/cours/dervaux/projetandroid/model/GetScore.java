@@ -11,7 +11,6 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLEncoder;
 import com.cours.dervaux.projetandroid.controller.AddScore;
-import com.cours.dervaux.projetandroid.model.Score;
 
 public class GetScore extends AsyncTask<Score, String, InputStreamReader>
 {
@@ -30,7 +29,7 @@ public class GetScore extends AsyncTask<Score, String, InputStreamReader>
             String query = String.format("score=%s&jeu=%s&id_pseudo=%s",
                     URLEncoder.encode(""+data[0].getScore(), charset),
                     URLEncoder.encode(""+data[0].getGame(), charset),
-                    URLEncoder.encode(""+data[0].getId(), charset) );
+                    URLEncoder.encode(""+data[0].getUser(), charset) );
             URL url = new URL(Access.URL_ADD_SCORE + "?" + query);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
