@@ -4,13 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.cours.dervaux.projetandroid.R;
 import com.cours.dervaux.projetandroid.model.GetGameList;
-import com.cours.dervaux.projetandroid.model.GetTopTen;
-import com.cours.dervaux.projetandroid.model.Score;
 
 import java.util.List;
 
@@ -40,7 +37,7 @@ public class GameList extends AppCompatActivity {
             case 0   :
                 this.list = list;
                 this.i = 0;
-                updateVue();
+                updateView();
                 if(list.size() > 5){ ((Button) findViewById(R.id.btn_next)).setEnabled(true); }
                 break;
             case 100 : ((TextView) findViewById(R.id.output)).setText(R.string.error100T); break;
@@ -50,7 +47,7 @@ public class GameList extends AppCompatActivity {
         }
     }
 
-    private void updateVue(){
+    private void updateView(){
         TextView tv1 = (TextView) findViewById(R.id.tv_game1);
         TextView tv2 = (TextView) findViewById(R.id.tv_game2);
         TextView tv3 = (TextView) findViewById(R.id.tv_game3);
@@ -73,7 +70,7 @@ public class GameList extends AppCompatActivity {
         if(this.list.size() > 5){
             ((Button) findViewById(R.id.btn_next)).setEnabled(true);
         }
-        updateVue();
+        updateView();
     }
 
     private void goNext(){
@@ -84,6 +81,6 @@ public class GameList extends AppCompatActivity {
         if(this.i >= 5){
             ((Button) findViewById(R.id.btn_prev)).setEnabled(true);
         }
-        updateVue();
+        updateView();
     }
 }

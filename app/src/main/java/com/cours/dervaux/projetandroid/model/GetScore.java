@@ -2,12 +2,9 @@ package com.cours.dervaux.projetandroid.model;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLEncoder;
 import com.cours.dervaux.projetandroid.controller.AddScore;
@@ -46,11 +43,11 @@ public class GetScore extends AsyncTask<Score, String, InputStreamReader>
     @Override
     protected void onPostExecute(InputStreamReader result) {
         super.onPostExecute(result);
-        int code = 1;
+
         try{
             if(result != null){
                 BufferedReader br = new BufferedReader (result);
-                code = Integer.parseInt(br.readLine());
+                int code = Integer.parseInt(br.readLine());
                 ((AddScore)this.context).scoreResponse(code); //Sending the response
                 br.close();
                 result.close();

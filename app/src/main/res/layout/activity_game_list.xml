@@ -70,6 +70,17 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/output"
+        android:layout_below="@+id/tv_game5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/btn_next" />
+
     <Button
         android:text="→"
         android:layout_width="wrap_content"
@@ -93,4 +104,5 @@
         android:layout_alignParentStart="true"
         android:enabled="false"
         android:onClick="btn_goPrevious" />
+
 </RelativeLayout>

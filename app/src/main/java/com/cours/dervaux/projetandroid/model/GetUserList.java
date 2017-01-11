@@ -3,17 +3,17 @@ package com.cours.dervaux.projetandroid.model;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.JsonReader;
-import com.cours.dervaux.projetandroid.controller.GameList;
+import com.cours.dervaux.projetandroid.controller.UserList;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetGameList extends AsyncTask<String, String, InputStreamReader> {
+public class GetUserList extends AsyncTask<String, String, InputStreamReader> {
     private Context context;
 
-    public GetGameList (Context context){
+    public GetUserList (Context context){
         this.context = context;
     }
 
@@ -22,7 +22,7 @@ public class GetGameList extends AsyncTask<String, String, InputStreamReader> {
         InputStreamReader res = null;
 
         try{
-            URL url = new URL(RPC_FETCH.LIST_GAME);
+            URL url = new URL(RPC_FETCH.LIST_USER);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(15000);
@@ -63,7 +63,7 @@ public class GetGameList extends AsyncTask<String, String, InputStreamReader> {
                             }
                             jsonReader.endArray();
                         }
-                        ((GameList)this.context).gameListResponse(code,list); //Sending the response
+                        ((UserList)this.context).userListResponse(code,list); //Sending the response
                     }
                 }
                 jsonReader.endObject();

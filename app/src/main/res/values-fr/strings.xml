@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Titles -->
+    <string name="app_name">Score Board</string>
+    <string name="t_connection">Score Board - Connexion</string>
+    <string name="t_index">Index</string>
+    <string name="t_addScore">Score Board - Ajouter un score</string>
+    <string name="t_top10">Score Board - Top 10</string>
+    <string name="t_gameList">Score Board - Liste des jeux</string>
+    <string name="t_userList">Score Board - Liste des joueurs</string>
+
+<!-- Others -->
+    <string name="connection">Connexion</string>
+    <string name="username">Pseudo</string>
+    <string name="password">Mot de passe</string>
+    <string name="toggleRegister">Activer l\'enregistrement</string>
+    <string name="passwordConfirm">Confirmation du mot de passe</string>
+    <string name="registered">Inscription réussie, vous pouvez maintenant vous connecter.</string>
+    <string name="register">S\'inscrire</string>
+    <string name="addScore">Ajoutez votre score</string>
+    <string name="top10">Top 10</string>
+    <string name="gameList">Liste des jeux</string>
+    <string name="userList">Liste des joueurs</string>
+    <string name="gameName">Nom du jeu</string>
+    <string name="gameScore">Votre score</string>
+    <string name="btnTop10">Afficher le Top 10 pour ce jeu</string>
+    <string name="t10gameList">Top 10 pour</string>
+
+<!-- Errors -->
+    <string name="error100">Erreur de pseudo.</string>
+    <string name="error110">Erreur de mot de passe.</string>
+    <string name="error200I">Ce pseudo est déjà prit.</string>
+    <string name="error200C">Pseudo ou mot de passe incorrect.</string>
+    <string name="error1000">Impossible de se connecter à la base de données.</string>
+    <string name="error2000">Une erreur s\'est produite.</string>
+    <string name="err100">Erreur de score.</string>
+    <string name="err110">Erreur de nom de jeu.</string>
+    <string name="err120">Erreur interne d\'ID.</string>
+    <string name="error100T">Erreur de nom de jeu.</string>
+    <string name="error200T">Pas encore de scores pour ce jeu.</string>
+
+<string name="fr" />
+</resources>

@@ -3,18 +3,13 @@ package com.cours.dervaux.projetandroid.model;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
-
 import com.cours.dervaux.projetandroid.controller.Connection;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.SocketTimeoutException;
 import java.net.URL;
 
 public class GetRegister extends AsyncTask<Player, String, InputStreamReader> {
